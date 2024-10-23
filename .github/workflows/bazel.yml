@@ -111,7 +111,6 @@ jobs:
               echo "MAGMA_VERSION=${magma_version}" >> $GITHUB_ENV
           fi
         # Step to Initialize Git LFS and track .deb files
-
       - name: Initialize Git LFS
         run: |
           git lfs install
@@ -119,21 +118,26 @@ jobs:
           git lfs track "*.deb"
           git add .gitattributes
       
-      - name: Add and Commit Packages to Git
+      # Add the packages to Git LFS and commit
+      - name: Add and Commit Packages to Git LFS
         run: |
+          # Add packages to Git LFS
           git add packages/*
           git commit -m "Add built .deb packages" || echo "No changes to commit"
 
-      - name: Push Changes to Repository
+      - name: Push Packages to New Git Repository
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}  # GitHub token for authentication
         run: |
-          git push origin HEAD:v1.9  
+          # Set up remote repository
+          git remote add sample https://github.com/mohin987/sample.git
+          git remote -v
+          # Push to the new repository
+          git push sample HEAD:main  # Push to the main branch
 
       - name: Publish debian packages
         id: publish_agw_deb_pkg
         env:
           DEBIAN_META_INFO: deb.distribution=focal-1.9.0;deb.component=main;deb.architecture=amd64
         run: |
-            ls packages/
-         
+            ls package/
