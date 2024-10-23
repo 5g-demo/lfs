@@ -128,7 +128,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push origin HEAD:main  
+          git push origin HEAD:v1.9  
 
       - name: Publish debian packages
         id: publish_agw_deb_pkg
