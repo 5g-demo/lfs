@@ -129,7 +129,7 @@ jobs:
           git commit -m "Add built .deb packages" || echo "No changes to commit"
           git status
           # Push to the new repository
-          git push -v sample HEAD:main  # Push to the main branch
+          git push -v https://mohin987:$GITHUB_TOKEN@github.com/mohin987/sample.git HEAD:main  # Push to the main branch
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
