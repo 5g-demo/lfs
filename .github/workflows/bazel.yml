@@ -35,8 +35,7 @@ on:
     branches:
       - 'release/*'
 permissions:
-  contents: write
-  pull-requests: write   
+  contents: write 
 env:
   BAZEL_BASE_IMAGE: "ghcr.io/magma/magma/bazel-base:latest"
   # Warning: the values of BAZEL_CACHE_PLAIN_IMAGE and BAZEL_CACHE_PROD_IMAGE
