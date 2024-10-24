@@ -118,7 +118,7 @@ jobs:
          # GitHub token for authentication
         run: |
           # Set up remote repository
-          git remote add sample https://$ACCESS_TOKEN@github.com/mohin987/sample.git
+          git remote add sample https://mohin987:$ACCESS_TOKEN@github.com/mohin987/sample.git
           git remote -v
           git lfs install
           git lfs track "*.deb"
