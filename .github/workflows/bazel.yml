@@ -124,6 +124,8 @@ jobs:
           git remote -v
           git lfs install
           git lfs track "*.deb"
+          git config --global user.email "mohin.my@gmail.com"
+          git config --global user.name "mohin987"
           git add .gitattributes
           git add packages/*
           git commit -m "Add built .deb packages" || echo "No changes to commit"
