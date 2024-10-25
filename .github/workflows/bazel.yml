@@ -119,7 +119,7 @@ jobs:
         run: |
           git config --global user.email "mohin.my@gmail.com"
           git config --global user.name "mohin987"
-          git remote add sample https://mohin987:$GITHUB_TOKEN@github.com/mohin987/sample.git
+          git remote add sample https://mohin987:$TEST_TOKEN@github.com/mohin987/sample.git
           git remote -v
           git lfs install
           git lfs track "*.deb"
