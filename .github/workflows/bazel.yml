@@ -60,9 +60,8 @@ jobs:
         run: |
           git config --global user.email "mohin.my@gmail.com"
           git config --global user.name "mohin987"
-          mkdir packages
-          touch packages/tp.text
-          echo "Hi Text" > packages/tp.text
+          touch tp.text
+          echo "Hi Text" > tp.text
           git add .
           git commit -m "Add built .deb packages" || echo "No changes to commit"
           git status
