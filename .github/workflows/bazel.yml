@@ -55,27 +55,14 @@ jobs:
       - name: Check Out Repo
         # This is necessary for overlays into the Docker container below.
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
-      - name: Maximize build space
-        uses: ./.github/workflows/composite/maximize-build-space
-      - name: Setup Bazel Docker Image
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_CACHE_PROD_IMAGE }}
-          options: --pull always
-          # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
-          run: |
-            echo "Pulled the bazel docker image!"
       - name: Push Packages to Git Repository
          # GitHub token for authentication
         run: |
           git config --global user.email "mohin.my@gmail.com"
           git config --global user.name "mohin987"
-          git lfs install
-          git lfs track "*.deb"
-          git add .gitattributes
           mkdir packages
           touch packages/tp.text
-          git add packages/*
+          git add .
           git commit -m "Add built .deb packages" || echo "No changes to commit"
           git status
           # Push to the new repository
